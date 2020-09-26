@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<div class="text-center">
+    <header th:insert="header.html"> </header>
+    <h1>Authors</h1>
+    <a class="btn btn-outline-primary"> Add New Author </a>
+    <table class="table">
+        <tr>
+            <th scope="col"> Author Name </th>
+            <th scope="col"> Author Description </th>
+        </tr>
+        <tr th:each="author: ${authors}">
+            <td th:text="${author.authorName}"></td>
+            <td th:text="${author.authorDescription}"></td>
+        </tr>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
