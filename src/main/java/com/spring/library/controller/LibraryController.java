@@ -28,8 +28,12 @@ public class LibraryController {
     }
 
     @GetMapping("/booksPage")
-    public String viewBooksPage(Model model) {
-        model.addAttribute("books", bookService.getAllBooks());
+    public String viewBooksPage(Model model, String keyword) {
+
+        if(keyword!=null)
+            model.addAttribute("books", bookService.getBooksByKeyword(keyword));
+        else
+            model.addAttribute("books", bookService.getAllBooks());
         return "books";
     }
 }

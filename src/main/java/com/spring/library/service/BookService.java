@@ -19,8 +19,11 @@ public class BookService {
     AuthorRepository authorRepository;
 
     public List<Book> getAllBooks() {
-        List<Book> books = bookRepository.findAll();
-        return books;
+        return bookRepository.findAll();
+    }
+
+    public List<Book> getBooksByKeyword(String keyword) {
+        return bookRepository.findByKeyword(keyword);
     }
 
     public Book getBook(Long id) {
@@ -32,8 +35,6 @@ public class BookService {
     book.setAuthor(author);
     author.getBooks().add(book);
     bookRepository.save(book);
-
-
     }
 
     public void updateBook(Book book, Long id) {
