@@ -1,9 +1,6 @@
 package com.spring.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -16,8 +13,16 @@ public class Book {
     private long bookId;
 
     private String isbn;
+
     @Column(name="book_name")
     private String bookName;
+
+    @Column(name="book_sub_name")
+    private String bookSubName;
+
+    @Column(name="book_serial_name")
+    private String bookSerialName;
+
     @Column(name="book_description")
     private String bookDescription;
 
@@ -26,15 +31,23 @@ public class Book {
     @JsonBackReference
     private Author author;
 
+    @ManyToOne(targetEntity = Publisher.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "publisher_id", nullable = false)
+    @JsonBackReference
+    private Publisher publisher;
+
     public Book() {
 
     }
 
-    public Book(String isbn, String bookName, String bookDescription,  Author author) {
+    public Book(String isbn, String bookName, String bookSubName, String bookSerialName, String bookDescription, Author author, Publisher publisher) {
         this.isbn = isbn;
         this.bookName = bookName;
+        this.bookSubName = bookSubName;
+        this.bookSerialName = bookSerialName;
         this.bookDescription = bookDescription;
         this.author = author;
+        this.publisher = publisher;
     }
 
     public long getBookId() {
@@ -61,6 +74,22 @@ public class Book {
         this.bookName = bookName;
     }
 
+    public String getBookSubName() {
+        return bookSubName;
+    }
+
+    public void setBookSubName(String bookSubName) {
+        this.bookSubName = bookSubName;
+    }
+
+    public String getBookSerialName() {
+        return bookSerialName;
+    }
+
+    public void setBookSerialName(String bookSerialName) {
+        this.bookSerialName = bookSerialName;
+    }
+
     public String getBookDescription() {
         return bookDescription;
     }
@@ -77,5 +106,11 @@ public class Book {
         this.author = author;
     }
 
+    public Publisher getPublisher() {
+        return publisher;
+    }
 
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 }

@@ -46,6 +46,10 @@ public class Author {
         this.books = books;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
     public String getAuthorName() {
         return authorName;
     }
@@ -58,9 +62,5 @@ public class Author {
 
     public void setAuthorDescription(String authorDescription) {
         this.authorDescription = authorDescription;
-    }
-
-    public List<Book> getBooks() {
-        return books;
     }
 }

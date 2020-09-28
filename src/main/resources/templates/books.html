@@ -19,12 +19,14 @@
             <th scope="col"> Book Description </th>
             <th scope="col"> Isbn </th>
             <th scope="col"> Author </th>
+            <th scope="col"> Publisher </th>
         </tr>
         <tr th:each="book: ${books}">
             <td th:text="${book.bookName}"></td>
             <td th:text="${book.bookDescription}"></td>
             <td th:text="${book.isbn}"></td>
             <td th:text="${book.author.getAuthorName()}"></td>
+            <td th:text="${book.author.getPublisherName()}"></td>
         </tr>
         </tr>
     </table>
