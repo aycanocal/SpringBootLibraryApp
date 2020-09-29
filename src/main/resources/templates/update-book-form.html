@@ -9,13 +9,13 @@
 <header th:insert="header.html"> </header>
 <div class="text-center">
     <form action="#" th:action="@{/saveUpdatedBook/{id}(id=${book.bookId})}" method="post" th:object="${book}">
-        <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookName}" placeholder="Name" class="form-control mb-4 col-4"/>
-        <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookDescription}" placeholder="Description" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto; margin-top: 20px;'" type="text" th:field="*{bookName}" placeholder="Name" class="form-control mb-4 col-4"/>
+        <textarea th:style="'margin: 0 auto;'" type="text" th:field="*{bookDescription}" placeholder="Description" class="form-control mb-4 col-4"/>
         <input th:style="'margin: 0 auto;'" type="text" th:field="*{isbn}" placeholder="Isbn" class="form-control mb-4 col-4"/>
         <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookSubName}" placeholder="Sub Name" class="form-control mb-4 col-4"/>
         <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookSerialName}" placeholder="Serial Name" class="form-control mb-4 col-4"/>
-        <input th:style="'margin: 0 auto;'" type="text" th:field="*{author.authorId}" placeholder="Author id" class="form-control mb-4 col-4"/>
-        <input th:style="'margin: 0 auto;'" type="text" th:field="*{publisher.publisherId}" placeholder="Publisher id" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{author.authorName}" placeholder="Author id" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{publisher.publisherName}" placeholder="Publisher id" class="form-control mb-4 col-4"/>
         <button type="submit" class="btn btn-outline-primary">Update Book</button>
     </form>
 
