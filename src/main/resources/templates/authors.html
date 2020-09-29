@@ -12,12 +12,16 @@
     <a th:href ="@{/addAuthor}" class="btn btn-outline-primary"> Add New Author </a>
     <table class="table">
         <tr>
-            <th scope="col"> Author Name </th>
-            <th scope="col"> Author Description </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Description </th>
+            <th scope="col"> Actions </th>
         </tr>
         <tr th:each="author: ${authors}">
             <td th:text="${author.authorName}"></td>
             <td th:text="${author.authorDescription}"></td>
+            <td> <a th:href="@{/updateAuthor/{id}(id=${author.authorId})}"  class="btn btn-outline-primary">Update</a>
+                <a th:href="@{/deleteAuthor/{id}(id=${author.authorId})}"  class="btn btn-outline-danger">Delete</a>
+            </td>
         </tr>
     </table>
 </div>

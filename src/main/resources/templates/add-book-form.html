@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="header.html"> </header>
+<div class="text-center">
+    <form action="#" th:action="@{/saveBook}" method="post" th:object="${book}">
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookName}" placeholder="Name" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookDescription}" placeholder="Description" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{isbn}" placeholder="Isbn" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookSubName}" placeholder="Sub Name" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{bookSerialName}" placeholder="Serial Name" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{author.authorId}" placeholder="Author id" class="form-control mb-4 col-4"/>
+        <input th:style="'margin: 0 auto;'" type="text" th:field="*{publisher.publisherId}" placeholder="Publisher id" class="form-control mb-4 col-4"/>
+        <button type="submit" class="btn btn-outline-primary">Add Book</button>
+    </form>
+
+
+
+
+</div>
+
+</body>
+</html>

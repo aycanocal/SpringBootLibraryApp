@@ -8,10 +8,10 @@
 <body>
 <header th:insert="header.html"> </header>
 <div class="text-center">
-    <form action="#" th:action="@{/savePublisher}" method="post" th:object="${publisher}">
+    <form action="#" th:action="@{/saveUpdatedPublisher/{id}(id=${publisher.publisherId})}" method="post" th:object="${publisher}">
         <input th:style="'margin: 0 auto;'" type="text" th:field="*{publisherName}" placeholder="Name" class="form-control mb-4 col-4"/>
         <input th:style="'margin: 0 auto;'" type="text" th:field="*{publisherDescription}" placeholder="Description" class="form-control mb-4 col-4"/>
-        <button type="submit" class="btn btn-outline-primary">Add Publisher</button>
+        <button type="submit" class="btn btn-outline-primary">Update Publisher</button>
     </form>
 </div>
 

@@ -12,12 +12,16 @@
     <a th:href ="@{/addPublisher}" class="btn btn-outline-primary"> Add New Publisher </a>
     <table class="table">
         <tr>
-            <th scope="col"> Publisher Name </th>
-            <th scope="col"> Publisher Description </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Description </th>
+            <th scope="col"> Actions </th>
         </tr>
         <tr th:each="publisher: ${publishers}">
             <td th:text="${publisher.publisherName}"></td>
             <td th:text="${publisher.publisherDescription}"></td>
+            <td> <a th:href="@{/updatePublisher/{id}(id=${publisher.publisherId})}"  class="btn btn-outline-primary">Update</a>
+                <a th:href="@{/deletePublisher/{id}(id=${publisher.publisherId})}"  class="btn btn-outline-danger">Delete</a>
+            </td>
         </tr>
     </table>
 </div>

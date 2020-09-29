@@ -1,7 +1,6 @@
 package com.spring.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,8 +21,8 @@ public class Author {
     @Column(name="author_description")
     private String authorDescription;
 
-    @OneToMany(targetEntity=Book.class, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(targetEntity=Book.class)
+    @JsonBackReference(value="book-author")
     private List<Book> books = new ArrayList<>();
 
     public Author() {

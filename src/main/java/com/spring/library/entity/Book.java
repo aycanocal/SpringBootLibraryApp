@@ -1,6 +1,9 @@
 package com.spring.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -26,14 +29,14 @@ public class Book {
     @Column(name="book_description")
     private String bookDescription;
 
-    @ManyToOne(targetEntity = Author.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "author_id", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference(value="book-author")
     private Author author;
 
-    @ManyToOne(targetEntity = Publisher.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Publisher.class)
     @JoinColumn(name = "publisher_id", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference(value="book-publisher")
     private Publisher publisher;
 
     public Book() {

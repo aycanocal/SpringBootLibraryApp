@@ -1,5 +1,6 @@
 package com.spring.library.service;
 
+import com.spring.library.entity.Book;
 import com.spring.library.entity.Publisher;
 import com.spring.library.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ public class PublisherService {
 
     @Autowired
     PublisherRepository publisherRepository;
+
+    @Autowired
+   BookService bookService;
 
     public List<Publisher> getAllPublishers() {
         List<Publisher> publishers = publisherRepository.findAll();
@@ -34,6 +38,14 @@ public class PublisherService {
     }
 
     public void deletePublisher(Long id) {
+
+        Publisher publisher = publisherRepository.getOne(id);
+        List<Book> books = publisher.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            Long bookId = book.getBookId();
+            bookService.deleteBook(bookId);
+        }
         publisherRepository.deleteById(id);
     }
 }

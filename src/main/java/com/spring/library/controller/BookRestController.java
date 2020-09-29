@@ -24,9 +24,9 @@ public class BookRestController {
         return bookService.getBook(id);
     }
 
-    @PostMapping("/authors/{id}/books")
-    public void addBook(@PathVariable long id, @RequestBody Book book) {
-        bookService.addBook(book, id);
+    @PostMapping("/{authorId}/{publisherId}/books")
+    public void addBook(@PathVariable long authorId, @PathVariable long publisherId, @RequestBody Book book) {
+        bookService.addBook(book, authorId, publisherId);
     }
 
     @PutMapping("/books/{id}")
@@ -34,9 +34,9 @@ public class BookRestController {
         bookService.updateBook(book, id);
     }
 
-    @DeleteMapping("/authors/{authorId}/books/{bookId}")
-    public void deleteBook(@PathVariable long authorId, @PathVariable long bookId ) {
-        bookService.deleteBook(authorId, bookId);
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable long id) {
+        bookService.deleteBook(id);
     }
 
 }

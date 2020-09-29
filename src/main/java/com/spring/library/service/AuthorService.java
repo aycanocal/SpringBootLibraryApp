@@ -1,6 +1,7 @@
 package com.spring.library.service;
 
 import com.spring.library.entity.Author;
+import com.spring.library.entity.Book;
 import com.spring.library.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class AuthorService {
 
     @Autowired
     AuthorRepository authorRepository;
+
+    @Autowired
+    BookService bookService;
 
     public List<Author> getAllAuthors() {
         List<Author> authors = authorRepository.findAll();
@@ -34,6 +38,14 @@ public class AuthorService {
     }
 
     public void deleteAuthor(Long id) {
+        Author author = authorRepository.getOne(id);
+        List<Book> books = author.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            Long bookId = book.getBookId();
+            bookService.deleteBook(bookId);
+        }
+
         authorRepository.deleteById(id);
     }
 }
