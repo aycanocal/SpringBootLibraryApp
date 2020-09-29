@@ -9,11 +9,11 @@
 <div class="text-center">
     <header th:insert="header.html"> </header>
     <h2>Books</h2>
-    <form class="form-inline" th:action="@{/booksPage}" method="get">
-        <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search Books" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
     <a th:href ="@{/addBook}" class="btn btn-outline-primary"> Add New Book </a>
+    <form class="form-inline" th:action="@{/booksPage}" method="get">
+      <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search Books" aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
     <table class="table">
         <tr>
             <th scope="col"> Name </th>

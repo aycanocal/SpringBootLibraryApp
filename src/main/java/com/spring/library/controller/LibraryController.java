@@ -91,7 +91,11 @@ public class LibraryController {
 
     @PostMapping("/saveBook")
     public String saveBook(@ModelAttribute("book") Book book) {
-              bookService.addBook(book, book.getAuthor().getAuthorId(), book.getPublisher().getPublisherId());
+        Author author = authorService.getAuthorByName(book.getAuthor().getAuthorName());
+        Publisher publisher = publisherService.getPublisherByName(book.getPublisher().getPublisherName());
+        Long authorId = author.getAuthorId();
+        Long publisherId = publisher.getPublisherId();
+        bookService.addBook(book, authorId, publisherId);
         return "redirect:/booksPage";
     }
 

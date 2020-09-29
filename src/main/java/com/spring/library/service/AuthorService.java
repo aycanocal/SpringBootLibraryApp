@@ -26,6 +26,11 @@ public class AuthorService {
         return authorRepository.findById(id).orElse(null);
     }
 
+    public Author getAuthorByName(String authorName) {
+        List<Author> authors = authorRepository.findByAuthorName(authorName);
+        return authors.get(0);
+    }
+
     public void addAuthor(Author author) {
         authorRepository.save(author);
     }
@@ -45,7 +50,6 @@ public class AuthorService {
             Long bookId = book.getBookId();
             bookService.deleteBook(bookId);
         }
-
         authorRepository.deleteById(id);
     }
 }
