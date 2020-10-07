@@ -29,8 +29,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-                <p class="navbar-text">Hello [[${#httpServletRequest.remoteUser}]]! <a class="nav-link" href="/login">Logout</a></p>
+                <span class="navbar-text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
         </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/login">Logout</a>
+            </li>
         </ul>
     </div>
 </nav>
