@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<h2 th:style="'text-align: center; margin-top: 20px;'"> Login </h2>
+<form th:style="'margin: 10px;'" th:action="@{/login}" method="POST">
+    <div class="form-row">
+        <div class="form-col" th:style="'margin: 0 auto;'">
+    <div th:if="${param.error}" class="alert alert-error" th:style="'margin: 0 auto'">
+        Invalid username and password.
+    </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-col" th:style="'margin: 0 auto; margin-bottom: 10px;'">
+        <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-col" th:style="'margin: 0 auto; margin-bottom: 10px;'">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-col" th:style="'margin: 0 auto;'">
+        <p>Not registered? <a href="/register">Create an account.</a></p>
+    </div>
+</div>
+    <div class="form-row">
+        <div class="form-col" th:style="'margin: 0 auto; margin-bottom: 10px; '">
+    <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

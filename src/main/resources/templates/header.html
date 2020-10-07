@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -14,19 +14,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">
+                <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/authorsPage' ? 'active':''}">
                 <a class="nav-link" href="/authorsPage">Authors</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/publishersPage' ? 'active':''}">
                 <a class="nav-link" href="/publishersPage">Publishers</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/booksPage' ? 'active':''}">
                 <a class="nav-link" href="/booksPage">Books</a>
             </li>
-
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <p class="navbar-text">Hello [[${#httpServletRequest.remoteUser}]]! <a class="nav-link" href="/login">Logout</a></p>
+        </li>
         </ul>
     </div>
 </nav>

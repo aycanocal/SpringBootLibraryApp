@@ -21,8 +21,8 @@ public class LibraryController {
     BookService bookService;
 
     @GetMapping("/")
-    public String viewHomePage(Model model) {
-        return "index";
+    public String viewHomePage() {
+        return "home";
     }
 
     @GetMapping("/authorsPage")
