@@ -45,6 +45,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").permitAll()
                 .and()
                 .logout().invalidateHttpSession(true)
-                .clearAuthentication(true);
+                .clearAuthentication(true)
+                .and()
+                .httpBasic();
     }
 }

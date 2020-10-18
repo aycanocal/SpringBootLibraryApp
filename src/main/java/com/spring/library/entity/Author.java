@@ -1,7 +1,5 @@
 package com.spring.library.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,6 @@ public class Author {
     private String authorDescription;
 
     @OneToMany(targetEntity=Book.class)
-    @JsonBackReference(value="book-author")
     private List<Book> books = new ArrayList<>();
 
     public Author() {

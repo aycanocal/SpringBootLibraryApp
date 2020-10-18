@@ -3,9 +3,7 @@ package com.spring.library.service;
 import com.spring.library.entity.Author;
 import com.spring.library.entity.Book;
 import com.spring.library.entity.Publisher;
-import com.spring.library.repository.AuthorRepository;
 import com.spring.library.repository.BookRepository;
-import com.spring.library.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +14,6 @@ public class BookService {
 
     @Autowired
     BookRepository bookRepository;
-
-    @Autowired
-    AuthorRepository authorRepository;
-
-    @Autowired
-    PublisherRepository publisherRepository;
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
@@ -35,12 +27,10 @@ public class BookService {
         return bookRepository.findById(id).orElse(null);
     }
 
-    public void addBook(Book book, Long authorId, Long publisherId) {
-    Author author = authorRepository.getOne(authorId);
-    Publisher publisher = publisherRepository.getOne(publisherId);
-    book.setAuthor(author);
-    book.setPublisher(publisher);
+    public void addBook(Book book) {
+    Author author = book.getAuthor();
     author.getBooks().add(book);
+    Publisher publisher = book.getPublisher();
     publisher.getBooks().add(book);
     bookRepository.save(book);
     }

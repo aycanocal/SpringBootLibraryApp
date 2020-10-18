@@ -23,9 +23,9 @@ public class BookRestController {
         return bookService.getBook(id);
     }
 
-    @PostMapping("/{authorId}/{publisherId}/books")
-    public void addBook(@PathVariable long authorId, @PathVariable long publisherId, @RequestBody Book book) {
-        bookService.addBook(book, authorId, publisherId);
+    @PostMapping("/books")
+    public void addBook(@RequestBody Book book) {
+        bookService.addBook(book);
     }
 
     @PutMapping("/books/{id}")

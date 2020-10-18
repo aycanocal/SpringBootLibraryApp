@@ -1,10 +1,5 @@
 package com.spring.library.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 
 @Entity
@@ -29,14 +24,12 @@ public class Book {
     @Column(name="book_description")
     private String bookDescription;
 
-    @ManyToOne(targetEntity = Author.class)
+    @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
-    @JsonManagedReference(value="book-author")
     private Author author;
 
-    @ManyToOne(targetEntity = Publisher.class)
+    @ManyToOne
     @JoinColumn(name = "publisher_id", nullable = false)
-    @JsonManagedReference(value="book-publisher")
     private Publisher publisher;
 
     public Book() {

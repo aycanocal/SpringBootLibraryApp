@@ -37,9 +37,9 @@ public class BookController {
     public String saveBook(@ModelAttribute("book") Book book) {
         Author author = authorService.getAuthorByName(book.getAuthor().getAuthorName());
         Publisher publisher = publisherService.getPublisherByName(book.getPublisher().getPublisherName());
-        Long authorId = author.getAuthorId();
-        Long publisherId = publisher.getPublisherId();
-        bookService.addBook(book, authorId, publisherId);
+        book.setAuthor(author);
+        book.setPublisher(publisher);
+        bookService.addBook(book);
         return "redirect:/booksPage";
     }
 

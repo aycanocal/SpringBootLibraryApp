@@ -1,8 +1,5 @@
 package com.spring.library.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +20,6 @@ public class Publisher {
     private String publisherDescription;
 
     @OneToMany(targetEntity=Book.class)
-    @JsonBackReference(value="book-publisher")
     private List<Book> books = new ArrayList<>();
 
     public Publisher() {

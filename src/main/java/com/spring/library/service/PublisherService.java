@@ -1,6 +1,5 @@
 package com.spring.library.service;
 
-import com.spring.library.entity.Author;
 import com.spring.library.entity.Book;
 import com.spring.library.entity.Publisher;
 import com.spring.library.repository.PublisherRepository;
